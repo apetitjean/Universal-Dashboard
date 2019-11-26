@@ -4,13 +4,6 @@
     A. Petitjean
 
 #>
-
-
-Import-Module UniversalDashboard
-
-$EndpointInitializationScript = {        
-}
-
 $Page1 = New-UDPage -Name "Evaluation Universal Dashboard" `
                     -Content {
                         New-UDInput -Title "Votre avis compte !" -Endpoint {
@@ -55,7 +48,7 @@ $Page1 = New-UDPage -Name "Evaluation Universal Dashboard" `
                                                   "C'était génial !", 
                                                   "C'était bien", 
                                                   "Bof Bof", 
-                                                  "Nul à chier !") 
+                                                  "Nul !") 
                             New-UDInputField -Name EvaluationAnimateur `
                                              -Placeholder "Qu'avez-vous pensé de l'animateur ?" `
                                              -Type select `
@@ -63,14 +56,12 @@ $Page1 = New-UDPage -Name "Evaluation Universal Dashboard" `
                                                   "Super", 
                                                   "Bien", 
                                                   "Bof Bof", 
-                                                  "Nul à chier !") 
+                                                  "Nul !") 
                             New-UDInputField -Name TextboxLibre   -Type textbox -Placeholder "Ne soyez pas timide, exprimez vous !!! :-)" 
 
-                        } #-FontColor "black"
-                    
+                        }
                         # New-UDInputAction -Toast "Clicked!"    
                     }                                
-                    
 
-$Dashboard = New-UDDashboard -Title "Formulaire d'évaluation Universal Dashboard - Arnaud PETITJEAN"  -Pages @($Page1) -EndpointInitializationScript $EndpointInitializationScript
+$Dashboard = New-UDDashboard -Title "Formulaire d'évaluation Universal Dashboard - Arnaud PETITJEAN"  -Pages @($Page1)
 Start-UDDashboard -Dashboard $Dashboard -Port 8081 
